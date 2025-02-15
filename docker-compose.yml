@@ -1,0 +1,12 @@
+services:
+  db:
+    image: mysql:8.0
+    command: --local-infile=1 --secure-file-priv=""
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: insurance
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+      - ./data:/data
